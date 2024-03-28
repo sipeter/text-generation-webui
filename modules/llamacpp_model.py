@@ -110,7 +110,7 @@ class LlamaCppModel:
         if type(string) is str:
             string = string.encode()
 
-        return self.model.tokenize(string)
+        return self.model.tokenize(string,add_bos=False) # 修复utf-8编码问题
 
     def decode(self, ids, **kwargs):
         return self.model.detokenize(ids).decode('utf-8')
